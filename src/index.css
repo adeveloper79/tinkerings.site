@@ -2,75 +2,209 @@
 
 @layer base {
   :root {
-    /* Light Theme Tokens */
-    --bg-canvas: #f8f9fa;
-    --bg-card: #ffffff;
-    --bg-card-hover: #f3f4f6;
-    --bg-elevated: #f1f3f5;
-    --bg-elevated-hover: #e5e7eb;
-    --bg-input: #ffffff;
-    --bg-terminal: #111317;
-    --border-subtle: #e2e5e9;
-    --border-hover: #cfd4dc;
-    --text-primary: #090a0c;
-    --text-secondary: #334155;
-    --text-muted: #64748b;
-    --text-faint: #94a3b8;
-    --color-arterial-red: #fe1e34;
-    --color-crimson-pure: #ff0000;
-    --color-molten-amber: #ffac2e;
-    --color-acid-lime: #16a34a;
-    --color-acid-lime-text: #ffffff;
-    --color-pulse-green: #16a34a;
-    --color-coral-red: #fe1e34;
-    --color-signal-teal: #0891b2;
-    --scrollbar-track: #f1f3f5;
-    --scrollbar-thumb: #cbd5e1;
-    --scrollbar-hover: #94a3b8;
+    --gap: 24px;
+    --content-gap: 20px;
+    --nav-width: 1024px;
+    --main-width: 740px;
+    --header-height: 60px;
+    --footer-height: 60px;
+    --radius: 6px;
+
+    /* Light Theme (PaperMod feld.com) */
+    --theme: #ffffff;
+    --entry: #ffffff;
+    --primary: #1a1a1a;
+    --secondary: #666666;
+    --tertiary: #e5e5e5;
+    --content: #1a1a1a;
+    --code-block-bg: #1c1d21;
+    --code-bg: #f5f5f5;
+    --border: #e8e8e8;
+    --border-subtle: #e8e8e8;
+    --accent: #2563eb;
+    --accent-hover: #1d4ed8;
+
+    /* Compatibility aliases */
+    --bg-canvas: var(--theme);
+    --bg-card: var(--entry);
+    --bg-card-hover: #fafafa;
+    --bg-elevated: #f5f5f5;
+    --bg-elevated-hover: #ededed;
+    --text-primary: var(--primary);
+    --text-secondary: var(--content);
+    --text-muted: var(--secondary);
+    --text-faint: #999999;
   }
 
   html.dark {
-    /* Soft Dark Reading Tokens (Eye-friendly Charcoal Slate, anti-glare) */
-    --bg-canvas: #12151b;
-    --bg-card: #181c24;
-    --bg-card-hover: #1f242e;
-    --bg-elevated: #1e232d;
-    --bg-elevated-hover: #262c38;
-    --bg-input: #151921;
-    --bg-terminal: #0d1015;
-    --border-subtle: rgba(255, 255, 255, 0.08);
-    --border-hover: rgba(255, 255, 255, 0.16);
-    --text-primary: #f0f4f8;
-    --text-secondary: #d1d9e2;
-    --text-muted: #8e99a8;
-    --text-faint: #566170;
-    --color-arterial-red: #fe1e34;
-    --color-crimson-pure: #ff0000;
-    --color-molten-amber: #ffac2e;
-    --color-acid-lime: #e4f222;
-    --color-acid-lime-text: #08090a;
-    --color-pulse-green: #0ae448;
-    --color-coral-red: #fe1e34;
-    --color-signal-teal: #00bae2;
-    --color-lilac: #9d95ff;
-    --scrollbar-track: #12151b;
-    --scrollbar-thumb: #272d38;
-    --scrollbar-hover: #38404e;
+    /* Dark Theme (PaperMod feld.com) */
+    --theme: #1a1a1a;
+    --entry: #252525;
+    --primary: #e0e0e0;
+    --secondary: #999999;
+    --tertiary: #333333;
+    --content: #d0d0d0;
+    --code-block-bg: #202022;
+    --code-bg: #2a2a2a;
+    --border: #333333;
+    --border-subtle: #333333;
+    --accent: #38bdf8;
+    --accent-hover: #7dd3fc;
+
+    /* Compatibility aliases */
+    --bg-canvas: var(--theme);
+    --bg-card: var(--entry);
+    --bg-card-hover: #2d2d2d;
+    --bg-elevated: #282828;
+    --bg-elevated-hover: #303030;
+    --text-primary: var(--primary);
+    --text-secondary: var(--content);
+    --text-muted: var(--secondary);
+    --text-faint: #666666;
   }
 
   body {
-    font-family: 'Plus Jakarta Sans', 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
-    letter-spacing: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.7;
+    background-color: var(--theme);
+    color: var(--content);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: var(--bg-canvas);
-    color: var(--text-secondary);
-    transition: background-color 0.25s cubic-bezier(0.19, 1, 0.22, 1), color 0.25s cubic-bezier(0.19, 1, 0.22, 1);
+    transition: background-color 0.2s ease, color 0.2s ease;
   }
 
   code, pre, .font-mono {
     font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   }
+}
+
+/* PaperMod Specific Components */
+.post-entry {
+  position: relative;
+  margin-bottom: 20px;
+  padding: 22px 24px;
+  background: var(--entry);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  transition: border-color 0.2s ease, transform 0.15s ease;
+}
+.post-entry:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.tag-chip {
+  display: inline-block;
+  font-size: 11px;
+  padding: 2px 10px;
+  border-radius: 9999px;
+  background: var(--code-bg);
+  color: var(--secondary);
+  border: 1px solid var(--border);
+  line-height: 1.6;
+  transition: all 0.15s ease;
+}
+.tag-chip:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.home-avatar {
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+  border: 2px solid var(--border);
+  object-fit: cover;
+}
+
+.home-info {
+  margin-bottom: 28px;
+  padding: 24px;
+  background: var(--entry);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.paginav {
+  margin: 32px 0 20px 0;
+  display: flex;
+  line-height: 1.4;
+  border-radius: var(--radius);
+}
+.paginav .title {
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 11px;
+  color: var(--secondary);
+  font-family: monospace;
+}
+.paginav .prev,
+.paginav .next {
+  width: 50%;
+  padding: 14px 18px;
+  background: var(--entry);
+  border: 1px solid var(--border);
+  transition: all 0.15s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+.paginav .prev {
+  border-top-left-radius: var(--radius);
+  border-bottom-left-radius: var(--radius);
+}
+.paginav .next {
+  margin-left: auto;
+  text-align: right;
+  border-top-right-radius: var(--radius);
+  border-bottom-right-radius: var(--radius);
+  border-left: 0;
+}
+.paginav .prev:hover,
+.paginav .next:hover {
+  border-color: var(--accent);
+}
+.paginav .post-nav-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--primary);
+  margin-top: 4px;
+}
+
+.top-link {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 40;
+  background: var(--entry);
+  border: 1px solid var(--border);
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: var(--secondary);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.top-link:hover {
+  color: var(--primary);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+#reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: var(--accent);
+  z-index: 100;
+  transition: width 50ms ease-out;
 }
 
 /* Custom scrollbar matching active theme */
@@ -79,12 +213,13 @@
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--scrollbar-track);
+  background: var(--theme);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--scrollbar-thumb);
+  background: var(--border);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--scrollbar-hover);
+  background: var(--secondary);
 }
+
