@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tinkerings Developer Log & GitHub Pages</title>
+    <meta name="description" content="A personal engineering devlog by adeveloper79 documenting hands-on hardware builds, moddings, 3d printing, reverse engineering, and random projects. Every write-up includes practical notes from the workbench." />
+    <meta property="og:title" content="Tinkerings Log" />
+    <meta property="og:description" content="A personal engineering devlog by adeveloper79 documenting hands-on hardware builds, moddings, 3d printing, reverse engineering, and random projects. Every write-up includes practical notes from the workbench." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <script>
+      (function() {
+        try {
+          var pref = localStorage.getItem('tinkerings_theme_preference');
+          var isDark = pref === 'dark' || (!pref || pref === 'system') && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (isDark) {
+            document.documentElement.classList.add('dark');
+            document.documentElement.classList.remove('light');
+          } else {
+            document.documentElement.classList.add('light');
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body class="antialiased min-h-screen">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

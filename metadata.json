@@ -1,0 +1,6 @@
+{
+  "name": "Tinkerings — Developer Log & GitHub Pages",
+  "description": "A personal engineering devlog by adeveloper79 documenting hands-on hardware builds, moddings, 3d printing, reverse engineering, and random projects. Every write-up includes practical notes from the workbench.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
