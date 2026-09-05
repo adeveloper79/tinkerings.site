@@ -38,7 +38,7 @@ export const CompactPostRow: React.FC<CompactPostRowProps> = ({ post, onSelect }
         <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-[var(--code-bg)] text-[var(--secondary)] border border-[var(--border)]">
           {post.status}
         </span>
-        <ArrowRight className="w-3.5 h-3.5 text-[var(--secondary)] group-hover:text-[var(--accent)] group-hover:translate-x-0.5 transition-transform ml-1" />
+        <ArrowRight className="w-3.5 h-3.5 text-[var(--secondary)] group-hover:text-[var(--accent)] transition-colors ml-1" />
       </div>
     </div>
   );

@@ -36,13 +36,13 @@ export const Header: React.FC<HeaderProps> = ({
       )}
 
       <header className="border-b border-[var(--border)] bg-[var(--theme)] transition-colors">
-        <nav className="max-w-[740px] mx-auto px-4 h-[60px] flex items-center justify-between">
+        <nav className="max-w-[880px] mx-auto px-4 h-[60px] flex items-center justify-between">
           {/* Brand Logo & Title */}
           <div className="flex items-center gap-3">
             <button
               onClick={onNavigateHome}
               className="flex items-center gap-2.5 font-bold text-xl sm:text-[22px] text-[var(--primary)] hover:text-[var(--accent)] transition-colors cursor-pointer"
-              title="Tinkerings — adeveloper79"
+              title="Tinkerings Log — adeveloper79"
             >
               <img
                 src="https://github.com/adeveloper79.png"
@@ -52,7 +52,7 @@ export const Header: React.FC<HeaderProps> = ({
                   e.currentTarget.style.display = 'none';
                 }}
               />
-              <span>Tinkerings</span>
+              <span>Tinkerings Log</span>
             </button>
           </div>
 
@@ -73,6 +73,16 @@ export const Header: React.FC<HeaderProps> = ({
                 About
               </button>
             )}
+
+            <a
+              href="https://unsplash.com/@adeveloper79"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[var(--secondary)] hover:text-[var(--accent)] transition-colors hidden sm:inline-block"
+              title="Unsplash Photography"
+            >
+              Unsplash
+            </a>
 
             <a
               href="https://github.com/adeveloper79/tinkerings.site"

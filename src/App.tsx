@@ -17,6 +17,7 @@ import {
   Filter,
   Github,
   Mail,
+  Camera,
   X
 } from 'lucide-react';
 const STORAGE_KEY = 'tinkerings_devlog_posts_v2';
@@ -146,8 +147,8 @@ export default function App() {
         onOpenAbout={() => setIsAboutOpen(true)}
       />
 
-      {/* Main Content Area (PaperMod 740px single-column layout) */}
-      <main className="flex-1 max-w-[740px] w-full mx-auto px-4 py-6 sm:py-8">
+      {/* Main Content Area (PaperMod single-column layout) */}
+      <main className="flex-1 max-w-[880px] w-full mx-auto px-4 py-6 sm:py-8">
         {selectedPost ? (
           /* Reader View for Selected Blog Article */
           <PostDetail
@@ -183,6 +184,15 @@ export default function App() {
                       title="GitHub Profile"
                     >
                       <Github className="w-4 h-4" />
+                    </a>
+                    <a
+                      href="https://unsplash.com/@adeveloper79"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-[var(--accent)] transition-colors"
+                      title="Unsplash Photography (@adeveloper79)"
+                    >
+                      <Camera className="w-4 h-4" />
                     </a>
                     <a
                       href="mailto:adeveloper79@users.noreply.github.com"
@@ -298,25 +308,33 @@ export default function App() {
               </div>
             </div>
 
-            <div className="text-sm text-[var(--secondary)] leading-relaxed space-y-2">
+            <div className="text-sm text-[var(--secondary)] leading-relaxed">
               <p>
                 Welcome to my personal developer log. Here I document deep-dive hardware hacking, reverse engineering proprietary display drivers, custom firmware writing, and low-level Linux experiments.
               </p>
-              <p>
-                Featured projects include reverse engineering RTD2660 LCD display controller boards, custom SPI flash tooling, and handheld Linux tinkering.
-              </p>
             </div>
 
-            <div className="pt-3 border-t border-[var(--border)] flex items-center justify-between text-xs text-[var(--secondary)]">
-              <a
-                href="https://github.com/adeveloper79"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1.5 hover:text-[var(--accent)] transition-colors"
-              >
-                <Github className="w-3.5 h-3.5" />
-                <span>github.com/adeveloper79</span>
-              </a>
+            <div className="pt-3 border-t border-[var(--border)] flex flex-wrap items-center justify-between gap-2 text-xs text-[var(--secondary)]">
+              <div className="flex items-center gap-3">
+                <a
+                  href="https://github.com/adeveloper79"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1.5 hover:text-[var(--accent)] transition-colors"
+                >
+                  <Github className="w-3.5 h-3.5" />
+                  <span>GitHub</span>
+                </a>
+                <a
+                  href="https://unsplash.com/@adeveloper79"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1.5 hover:text-[var(--accent)] transition-colors"
+                >
+                  <Camera className="w-3.5 h-3.5" />
+                  <span>Unsplash</span>
+                </a>
+              </div>
               <button
                 onClick={() => setIsAboutOpen(false)}
                 className="px-3 py-1 rounded bg-[var(--primary)] text-[var(--theme)] font-medium cursor-pointer hover:opacity-90 transition-opacity"
@@ -330,12 +348,12 @@ export default function App() {
 
       {/* Footer (PaperMod feld.com style) */}
       <footer className="mt-auto border-t border-[var(--border)] bg-[var(--theme)] py-8 text-xs text-[var(--secondary)] transition-colors">
-        <div className="max-w-[740px] mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+        <div className="max-w-[880px] mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
           <div>
             <span>© {new Date().getFullYear()} </span>
             <a href="https://github.com/adeveloper79" className="hover:text-[var(--accent)] font-medium">adeveloper79</a>
             <span> · Powered by </span>
-            <a href="https://github.com/adeveloper79/tinkerings.site" className="hover:text-[var(--accent)] font-medium">Tinkerings</a>
+            <a href="https://github.com/adeveloper79/tinkerings.site" className="hover:text-[var(--accent)] font-medium">Tinkerings Log</a>
           </div>
 
           <div className="flex items-center justify-center gap-4">
@@ -347,6 +365,16 @@ export default function App() {
               <RotateCcw className="w-3.5 h-3.5" />
               <span>Reload Markdown</span>
             </button>
+            <a
+              href="https://unsplash.com/@adeveloper79"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[var(--accent)] flex items-center gap-1"
+              title="Unsplash Photography"
+            >
+              <Camera className="w-3.5 h-3.5" />
+              <span>Unsplash</span>
+            </a>
             <a
               href="https://github.com/adeveloper79/tinkerings.site"
               target="_blank"

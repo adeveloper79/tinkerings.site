@@ -108,39 +108,39 @@ export const MarkdownView: React.FC<MarkdownViewProps> = ({ content }) => {
             </strong>
           ),
           blockquote: ({ children }) => (
-            <blockquote className="border-l-4 border-[#fe1e34] pl-6 py-4 my-8 bg-[var(--bg-card)]/80 rounded-r-xl text-[var(--text-primary)] font-normal italic leading-[1.75] shadow-xs">
+            <blockquote className="border-l-4 border-[var(--accent)] pl-5 py-3 my-6 bg-[var(--entry)] rounded-r-lg text-[var(--secondary)] font-normal italic leading-[1.75]">
               {children}
             </blockquote>
           ),
           table: ({ children }) => (
-            <div className="overflow-x-auto my-6 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)] shadow-xs">
+            <div className="overflow-x-auto my-6 rounded-[var(--radius)] border border-[var(--border)] bg-[var(--entry)]">
               <table className="w-full text-left text-xs font-mono border-collapse">
                 {children}
               </table>
             </div>
           ),
           thead: ({ children }) => (
-            <thead className="bg-[var(--bg-elevated)] text-[var(--text-primary)] border-b border-[var(--border-subtle)]">
+            <thead className="bg-[var(--code-bg)] text-[var(--primary)] border-b border-[var(--border)]">
               {children}
             </thead>
           ),
           tbody: ({ children }) => (
-            <tbody className="divide-y divide-[var(--border-subtle)] text-[var(--text-secondary)]">
+            <tbody className="divide-y divide-[var(--border)] text-[var(--secondary)]">
               {children}
             </tbody>
           ),
           tr: ({ children }) => (
-            <tr className="hover:bg-[var(--bg-elevated)]/40 transition-colors">
+            <tr className="hover:bg-[var(--code-bg)]/50 transition-colors">
               {children}
             </tr>
           ),
           th: ({ children }) => (
-            <th className="py-3 px-4 font-semibold text-[var(--text-primary)] uppercase text-[11px] tracking-wider">
+            <th className="py-2.5 px-4 font-semibold text-[var(--primary)] uppercase text-[11px] tracking-wider">
               {children}
             </th>
           ),
           td: ({ children }) => (
-            <td className="py-2.5 px-4 text-[var(--text-secondary)]">
+            <td className="py-2 px-4 text-[var(--secondary)]">
               {children}
             </td>
           ),
@@ -151,7 +151,7 @@ export const MarkdownView: React.FC<MarkdownViewProps> = ({ content }) => {
                 href={href}
                 target={isExternal ? '_blank' : undefined}
                 rel={isExternal ? 'noopener noreferrer' : undefined}
-                className="inline-flex items-center gap-0.5 text-blue-500 hover:text-blue-400 dark:text-[var(--color-signal-teal)] hover:underline font-medium transition-colors"
+                className="inline-flex items-center gap-0.5 text-[var(--accent)] hover:underline font-medium transition-colors"
               >
                 <span>{children}</span>
                 {isExternal && <ExternalLink className="w-3 h-3 ml-0.5 opacity-70" />}
@@ -159,7 +159,7 @@ export const MarkdownView: React.FC<MarkdownViewProps> = ({ content }) => {
             );
           },
           hr: () => (
-            <hr className="my-8 border-[var(--border-subtle)]" />
+            <hr className="my-8 border-[var(--border)]" />
           ),
           img: ({ src, alt }) => {
             const resolvedSrc = resolveMediaUrl(src);
@@ -167,12 +167,12 @@ export const MarkdownView: React.FC<MarkdownViewProps> = ({ content }) => {
               <figure className="my-5 flex flex-col items-center group">
                 <div
                   onClick={() => resolvedSrc && setLightboxImage({ src: resolvedSrc, alt })}
-                  className="relative cursor-pointer overflow-hidden rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-elevated)] hover:border-[#fe1e34]/60 transition-all duration-300 shadow-sm hover:shadow-lg max-w-sm sm:max-w-md w-full"
+                  className="relative cursor-pointer overflow-hidden rounded-[var(--radius)] border border-[var(--border)] bg-[var(--entry)] hover:border-[var(--accent)] transition-colors duration-200 max-w-sm sm:max-w-md w-full"
                 >
                   <img
                     src={resolvedSrc}
                     alt={alt || 'Post image'}
-                    className="w-full h-auto max-h-[220px] sm:max-h-[250px] object-contain mx-auto transition-transform duration-300 group-hover:scale-[1.02] p-1.5"
+                    className="w-full h-auto max-h-[220px] sm:max-h-[250px] object-contain mx-auto p-1.5"
                     loading="lazy"
                     onError={(e) => {
                       const target = e.currentTarget;
@@ -182,22 +182,22 @@ export const MarkdownView: React.FC<MarkdownViewProps> = ({ content }) => {
                     }}
                   />
                   <div
-                    className="hidden flex-col items-center justify-center p-6 text-center text-[var(--text-muted)] space-y-2 bg-[var(--bg-elevated)]"
+                    className="hidden flex-col items-center justify-center p-6 text-center text-[var(--secondary)] space-y-2 bg-[var(--code-bg)]"
                     style={{ minHeight: '120px' }}
                   >
                     <AlertCircle className="w-6 h-6 text-amber-500" />
-                    <span className="text-xs font-mono font-medium text-[var(--text-primary)]">
+                    <span className="text-xs font-mono font-medium text-[var(--primary)]">
                       Media not found: {src}
                     </span>
                   </div>
-                  <div className="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-black/75 backdrop-blur-sm border border-white/15 text-zinc-300 group-hover:text-white text-[10px] font-mono flex items-center gap-1 opacity-80 group-hover:opacity-100 transition-opacity shadow-sm">
-                    <ZoomIn className="w-3 h-3 text-[#fe1e34]" />
+                  <div className="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-black/75 backdrop-blur-sm border border-white/15 text-zinc-300 group-hover:text-white text-[10px] font-mono flex items-center gap-1 opacity-80 group-hover:opacity-100 transition-opacity shadow-xs">
+                    <ZoomIn className="w-3 h-3 text-[var(--accent)]" />
                     <span>Expand</span>
                   </div>
                 </div>
                 {alt && (
-                  <figcaption className="mt-2 text-center text-xs font-mono text-[var(--text-muted)] flex items-center justify-center gap-1.5 max-w-md">
-                    <ImageIcon className="w-3.5 h-3.5 text-[var(--text-faint)] shrink-0" />
+                  <figcaption className="mt-2 text-center text-xs font-mono text-[var(--secondary)] flex items-center justify-center gap-1.5 max-w-md">
+                    <ImageIcon className="w-3.5 h-3.5 text-[var(--secondary)] shrink-0" />
                     <span>{alt}</span>
                   </figcaption>
                 )}

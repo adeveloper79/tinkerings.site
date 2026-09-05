@@ -34,11 +34,16 @@ export function parseMarkdownWithFrontmatter(rawContent: string, fallbackSlug: s
     }
   }
 
-  // Detect subtitle from initial blockquote if missing
+  // Detect subtitle from italic line under heading or initial blockquote if missing
   if (!subtitle) {
-    const quoteMatch = body.match(/^>\s+[*"_]*(.*?)[*"_]*$/m);
-    if (quoteMatch && quoteMatch[1].trim()) {
-      subtitle = quoteMatch[1].trim();
+    const italicMatch = body.match(/^#\s+[^\r\n]+\r?\n\*([^*\r\n]+)\*/m);
+    if (italicMatch && italicMatch[1].trim()) {
+      subtitle = italicMatch[1].trim();
+    } else {
+      const quoteMatch = body.match(/^>\s+[*"_]*(.*?)[*"_]*$/m);
+      if (quoteMatch && quoteMatch[1].trim()) {
+        subtitle = quoteMatch[1].trim();
+      }
     }
   }
 

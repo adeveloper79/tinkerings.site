@@ -5,7 +5,7 @@
     --gap: 24px;
     --content-gap: 20px;
     --nav-width: 1024px;
-    --main-width: 740px;
+    --main-width: 880px;
     --header-height: 60px;
     --footer-height: 60px;
     --radius: 6px;
@@ -87,11 +87,10 @@
   background: var(--entry);
   border-radius: var(--radius);
   border: 1px solid var(--border);
-  transition: border-color 0.2s ease, transform 0.15s ease;
+  transition: border-color 0.2s ease;
 }
 .post-entry:hover {
   border-color: var(--accent);
-  transform: translateY(-2px);
 }
 
 .tag-chip {
@@ -194,7 +193,6 @@
 .top-link:hover {
   color: var(--primary);
   border-color: var(--accent);
-  transform: translateY(-2px);
 }
 
 #reading-progress {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { TinkeringPost } from '../types';
 import { MarkdownView } from './MarkdownView';
 import { MacropadDemo } from './demos/MacropadDemo';
@@ -45,6 +45,18 @@ export const PostDetail: React.FC<PostDetailProps> = ({
     return 'comfortable';
   });
 
+  // Strip leading # Title and italic subtitle lines from markdown body to avoid displaying twice
+  const cleanContent = useMemo(() => {
+    let text = post.content.trim();
+    if (text.startsWith('# ')) {
+      text = text.replace(/^#\s+[^\r\n]+(\r?\n)*/, '');
+      while (text.match(/^\s*\*([^*\r\n]+)\*(\r?\n)*/)) {
+        text = text.replace(/^\s*\*([^*\r\n]+)\*(\r?\n)*/, '');
+      }
+    }
+    return text.trim();
+  }, [post.content]);
+
   useEffect(() => {
     const handleScroll = () => {
       setShowTopButton(window.scrollY > 350);
@@ -77,7 +89,7 @@ export const PostDetail: React.FC<PostDetailProps> = ({
 
   return (
     <article
-      className="max-w-[740px] mx-auto py-4"
+      className="max-w-[880px] mx-auto py-4"
       style={{ '--reading-font-size': FONT_SIZES[fontSize].size } as React.CSSProperties}
     >
       {/* Navigation & Toolbar Top Bar */}
@@ -206,7 +218,7 @@ export const PostDetail: React.FC<PostDetailProps> = ({
 
       {/* Main Markdown Body */}
       <div className="mt-6">
-        <MarkdownView content={post.content} />
+        <MarkdownView content={cleanContent} />
       </div>
 
       {/* PaperMod Paginav: Previous / Next Post Navigation */}
