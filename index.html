@@ -3,15 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tinkerings Developer Log & GitHub Pages</title>
-    <meta name="description" content="A personal engineering devlog by adeveloper79 documenting hands-on hardware builds, moddings, 3d printing, reverse engineering, and random projects. Every write-up includes practical notes from the workbench." />
-    <meta property="og:title" content="Tinkerings Log" />
-    <meta property="og:description" content="A personal engineering devlog by adeveloper79 documenting hands-on hardware builds, moddings, 3d printing, reverse engineering, and random projects. Every write-up includes practical notes from the workbench." />
+    <title>Tinkering Logs — adeveloper79</title>
+    <meta name="description" content="A personal engineering devlog by adeveloper79 documenting hands-on hardware builds, moddings, reverse engineering, and random projects." />
+    <meta property="og:title" content="Tinkering Logs" />
+    <meta property="og:description" content="A personal engineering devlog by adeveloper79 documenting hands-on hardware builds, moddings, reverse engineering, and random projects." />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
     <script>
       (function() {
         try {
@@ -23,6 +23,19 @@
           } else {
             document.documentElement.classList.add('light');
             document.documentElement.classList.remove('dark');
+          }
+
+          var savedFont = localStorage.getItem('tinkerings_reading_font');
+          var fontFamilies = {
+            inter: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+            merriweather: "'Merriweather', Georgia, Cambria, serif",
+            atkinson: "'Atkinson Hyperlegible', -apple-system, sans-serif",
+            literata: "'Literata', Georgia, 'Times New Roman', serif",
+            jetbrains: "'JetBrains Mono', ui-monospace, Menlo, monospace",
+            default: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif"
+          };
+          if (savedFont && fontFamilies[savedFont]) {
+            document.documentElement.style.setProperty('--font-reading', fontFamilies[savedFont]);
           }
         } catch (e) {}
       })();

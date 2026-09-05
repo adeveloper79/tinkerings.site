@@ -13,10 +13,13 @@ import {
   Check,
   Cpu
 } from 'lucide-react';
+import { FontChooser } from './FontChooser';
 
 interface PostDetailProps {
   post: TinkeringPost;
   allPosts?: TinkeringPost[];
+  currentFontId?: string;
+  onSelectFont?: (fontId: string) => void;
   onBack: () => void;
   onSelectPost?: (post: TinkeringPost) => void;
 }
@@ -32,6 +35,8 @@ const FONT_SIZES: Record<FontSize, { label: string; size: string; title: string 
 export const PostDetail: React.FC<PostDetailProps> = ({
   post,
   allPosts = [],
+  currentFontId = 'default',
+  onSelectFont,
   onBack,
   onSelectPost,
 }) => {
@@ -103,6 +108,14 @@ export const PostDetail: React.FC<PostDetailProps> = ({
         </button>
 
         <div className="flex items-center gap-2 text-xs">
+          {/* Font Chooser */}
+          {onSelectFont && (
+            <FontChooser
+              currentFontId={currentFontId}
+              onSelectFont={onSelectFont}
+            />
+          )}
+
           {/* Font Size Adjuster */}
           <div className="flex items-center rounded-md bg-[var(--code-bg)] border border-[var(--border)] p-0.5" title="Reading font size">
             {(['normal', 'comfortable', 'large'] as FontSize[]).map((size) => (

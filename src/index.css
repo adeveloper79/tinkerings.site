@@ -10,42 +10,48 @@
     --footer-height: 60px;
     --radius: 6px;
 
-    /* Light Theme (PaperMod feld.com) */
+    /* Light Theme (PaperMod) - High contrast & readable */
     --theme: #ffffff;
     --entry: #ffffff;
-    --primary: #1a1a1a;
-    --secondary: #666666;
-    --tertiary: #e5e5e5;
-    --content: #1a1a1a;
-    --code-block-bg: #1c1d21;
-    --code-bg: #f5f5f5;
-    --border: #e8e8e8;
-    --border-subtle: #e8e8e8;
+    --primary: #111827;
+    --secondary: #4b5563;
+    --tertiary: #e5e7eb;
+    --content: #1f2937;
+    --code-block-bg: #18181b;
+    --code-block-header: #27272a;
+    --code-block-text: #f1f5f9;
+    --code-bg: #f3f4f6;
+    --code-text: #0969da;
+    --border: #e5e7eb;
+    --border-subtle: #e5e7eb;
     --accent: #2563eb;
     --accent-hover: #1d4ed8;
 
     /* Compatibility aliases */
     --bg-canvas: var(--theme);
     --bg-card: var(--entry);
-    --bg-card-hover: #fafafa;
-    --bg-elevated: #f5f5f5;
-    --bg-elevated-hover: #ededed;
+    --bg-card-hover: #f9fafb;
+    --bg-elevated: #f3f4f6;
+    --bg-elevated-hover: #e5e7eb;
     --text-primary: var(--primary);
     --text-secondary: var(--content);
     --text-muted: var(--secondary);
-    --text-faint: #999999;
+    --text-faint: #6b7280;
   }
 
   html.dark {
-    /* Dark Theme (PaperMod feld.com) */
+    /* Dark Theme (PaperMod) */
     --theme: #1a1a1a;
     --entry: #252525;
-    --primary: #e0e0e0;
-    --secondary: #999999;
-    --tertiary: #333333;
-    --content: #d0d0d0;
-    --code-block-bg: #202022;
-    --code-bg: #2a2a2a;
+    --primary: #f3f4f6;
+    --secondary: #9ca3af;
+    --tertiary: #374151;
+    --content: #d1d5db;
+    --code-block-bg: #18181b;
+    --code-block-header: #27272a;
+    --code-block-text: #f1f5f9;
+    --code-bg: #2d2d30;
+    --code-text: #38bdf8;
     --border: #333333;
     --border-subtle: #333333;
     --accent: #38bdf8;
@@ -60,11 +66,11 @@
     --text-primary: var(--primary);
     --text-secondary: var(--content);
     --text-muted: var(--secondary);
-    --text-faint: #666666;
+    --text-faint: #9ca3af;
   }
 
   body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: var(--font-reading, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif);
     font-size: 17px;
     line-height: 1.7;
     background-color: var(--theme);

@@ -209,7 +209,7 @@ export const MarkdownView: React.FC<MarkdownViewProps> = ({ content }) => {
             if (!isBlock) {
               return (
                 <code
-                  className="font-mono text-[14.5px] bg-[var(--bg-elevated)] text-[#00bae2] dark:text-[#38bdf8] px-2 py-0.5 rounded-md border border-[var(--border-subtle)] font-medium"
+                  className="font-mono text-[14px] bg-[var(--code-bg)] text-[var(--code-text)] px-1.5 py-0.5 rounded border border-[var(--border)] font-medium"
                   {...props}
                 >
                   {children}
@@ -231,7 +231,7 @@ export const MarkdownView: React.FC<MarkdownViewProps> = ({ content }) => {
         >
           <button
             onClick={() => setLightboxImage(null)}
-            className="absolute top-6 right-6 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
+            className="absolute top-6 right-6 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
             title="Close image preview"
           >
             <X className="w-6 h-6" />
@@ -274,12 +274,12 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ className, children }) => {
   };
 
   return (
-    <div className="relative group my-6 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-terminal)] overflow-hidden shadow-xs">
-      <div className="flex items-center justify-between px-4 py-2 bg-[var(--bg-elevated)] border-b border-[var(--border-subtle)] text-[11px] font-mono text-[var(--text-muted)]">
-        <span className="uppercase tracking-wider text-[var(--text-faint)] font-semibold">{lang}</span>
+    <div className="relative group my-6 rounded-[var(--radius)] border border-[#333333] bg-[#18181b] overflow-hidden shadow-xs">
+      <div className="flex items-center justify-between px-4 py-2 bg-[#222226] border-b border-[#303036] text-[11px] font-mono text-zinc-300">
+        <span className="uppercase tracking-wider text-zinc-300 font-semibold">{lang}</span>
         <button
           onClick={handleCopy}
-          className="flex items-center gap-1 text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors px-2 py-0.5 rounded hover:bg-white/5 cursor-pointer"
+          className="flex items-center gap-1 text-zinc-300 hover:text-white transition-colors px-2 py-0.5 rounded hover:bg-white/10 cursor-pointer"
           title="Copy code snippet"
         >
           {copied ? (
@@ -295,7 +295,7 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ className, children }) => {
           )}
         </button>
       </div>
-      <pre className="p-4 font-mono text-xs sm:text-[13.5px] overflow-x-auto leading-[1.65] text-[#e2e8f0] bg-[var(--bg-terminal)]">
+      <pre className="p-4 font-mono text-xs sm:text-[13.5px] overflow-x-auto leading-[1.65] text-[#f1f5f9] bg-[#18181b]">
         <code>{children}</code>
       </pre>
     </div>

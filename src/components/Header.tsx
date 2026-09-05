@@ -1,11 +1,14 @@
 import React from 'react';
-import { Sun, Moon, Github, Terminal } from 'lucide-react';
+import { Sun, Moon, Github } from 'lucide-react';
 import { ThemeMode } from '../hooks/useTheme';
+import { FontChooser } from './FontChooser';
 
 interface HeaderProps {
   theme: ThemeMode;
   resolvedTheme: 'dark' | 'light';
   onSetTheme: (theme: ThemeMode) => void;
+  currentFontId?: string;
+  onSelectFont?: (fontId: string) => void;
   readingProgress?: number;
   isReading?: boolean;
   activePostTitle?: string;
@@ -16,6 +19,8 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({
   resolvedTheme,
   onSetTheme,
+  currentFontId = 'default',
+  onSelectFont,
   readingProgress = 0,
   isReading = false,
   onNavigateHome,
@@ -37,22 +42,14 @@ export const Header: React.FC<HeaderProps> = ({
 
       <header className="border-b border-[var(--border)] bg-[var(--theme)] transition-colors">
         <nav className="max-w-[880px] mx-auto px-4 h-[60px] flex items-center justify-between">
-          {/* Brand Logo & Title */}
+          {/* Brand Logo & Title (Text-only without logo picture) */}
           <div className="flex items-center gap-3">
             <button
               onClick={onNavigateHome}
-              className="flex items-center gap-2.5 font-bold text-xl sm:text-[22px] text-[var(--primary)] hover:text-[var(--accent)] transition-colors cursor-pointer"
-              title="Tinkerings Log — adeveloper79"
+              className="font-bold text-xl sm:text-[22px] text-[var(--primary)] hover:text-[var(--accent)] transition-colors cursor-pointer tracking-tight"
+              title="Tinkering Logs — adeveloper79"
             >
-              <img
-                src="https://github.com/adeveloper79.png"
-                alt="adeveloper79"
-                className="w-7 h-7 rounded-full border border-[var(--border)] object-cover"
-                onError={(e) => {
-                  e.currentTarget.style.display = 'none';
-                }}
-              />
-              <span>Tinkerings Log</span>
+              Tinkering Logs
             </button>
           </div>
 
@@ -93,6 +90,15 @@ export const Header: React.FC<HeaderProps> = ({
             >
               GitHub
             </a>
+
+            {/* Font Chooser */}
+            {onSelectFont && (
+              <FontChooser
+                currentFontId={currentFontId}
+                onSelectFont={onSelectFont}
+                compact
+              />
+            )}
 
             {/* Theme Toggle Button */}
             <button

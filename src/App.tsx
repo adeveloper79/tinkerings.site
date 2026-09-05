@@ -20,10 +20,12 @@ import {
   Camera,
   X
 } from 'lucide-react';
+import { useReadingFont } from './hooks/useReadingFont';
 const STORAGE_KEY = 'tinkerings_devlog_posts_v2';
 
 export default function App() {
   const { theme, resolvedTheme, setTheme } = useTheme();
+  const { currentFontId, setFont } = useReadingFont();
 
   // Clear stale legacy mock post caches from previous sessions
   useEffect(() => {
@@ -140,6 +142,8 @@ export default function App() {
         theme={theme}
         resolvedTheme={resolvedTheme}
         onSetTheme={setTheme}
+        currentFontId={currentFontId}
+        onSelectFont={setFont}
         readingProgress={readingProgress}
         isReading={Boolean(selectedPost)}
         activePostTitle={selectedPost?.title}
@@ -154,6 +158,8 @@ export default function App() {
           <PostDetail
             post={selectedPost}
             allPosts={posts}
+            currentFontId={currentFontId}
+            onSelectFont={setFont}
             onBack={handleBackToFeed}
             onSelectPost={handleSelectPost}
           />
