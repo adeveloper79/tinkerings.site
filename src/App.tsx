@@ -210,7 +210,7 @@ export default function App() {
                   </div>
                 </div>
                 <p className="text-[14px] sm:text-[15px] text-[var(--secondary)] leading-[1.6]">
-                  Hardware experiments, reverse engineering notes, and low-level engineering logs. Documenting hands-on work with display controllers, SPI flash, microcontrollers, and embedded Linux.
+                  A personal devlog by adeveloper79 for hands-on hardware builds, moddings, 3d printing, reverse engineering, and random projects. Every write-up includes practical notes of anything interesting
                 </p>
               </div>
             </div>
